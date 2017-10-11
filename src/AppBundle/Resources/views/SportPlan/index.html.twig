@@ -1,0 +1,114 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Pagrindinis - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            overflow: hidden;
+            background-color: #2c3e50;
+        }
+        .content {
+            margin-top: 80px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <nav class="navbar navbar-default" style="margin-bottom: 0px;">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('homepage') }}">VIRTUALUSTRENERIS</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ path('homepage') }}">Titulinis <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="{{ path('meal_plan_search') }}">Mitybos programos <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profilis <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('profile_meal_plan') }}">Mano mitybos programa</a></li>
+                                <li><a href="{{ path('profile_sport_plan') }}">Mano sporto programa</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ path('profile_clear') }}">Pašalinti programas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <div class="content" style="padding: 50px;">
+
+            <div class="top-text">
+                <p>Ieškokite sau pritaikytos sporto programos</p>
+            </div>
+
+                <div class="form-group" style="max-width: 400px; margin: auto;">
+                    {{ form_start(form, {'action': path('sport_plan_result')}) }}
+                    <div class="form-group">
+                        {{ form_label(form.gender, 'Lytis') }}
+                        {{ form_errors(form.gender) }}
+                        {% if gender is defined %}
+                            <p class="errorDI">{{ form_widget(form.gender) }}</p>
+                        {% else %}
+                            {{ form_widget(form.gender) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.experience, 'Patirtis') }}
+                        {{ form_errors(form.experience) }}
+                        {% if experience is defined %}
+                            <p class="errorDI">{{ form_widget(form.experience) }}</p>
+                        {% else %}
+                            {{ form_widget(form.experience) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.ageCategory, 'Amžiaus kategorija') }}
+                        {{ form_errors(form.ageCategory) }}
+                        {% if ageCategory is defined %}
+                            <p class="errorDI">{{ form_widget(form.ageCategory) }}</p>
+                        {% else %}
+                            {{ form_widget(form.ageCategory) }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group" role="group">
+
+                        {{ form_label(form.goals, 'Tikslas') }}
+                        {{ form_errors(form.goals) }}
+                        {% if goals is defined %}
+                            <p class="errorDI">{{ form_widget(form.goals) }}</p>
+                        {% else %}
+                            {{ form_widget(form.goals) }}
+                        {% endif %}
+                    </div><br>
+                    {{ form_end(form) }}
+                </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "::admin-base.html.twig" %}
+
+{% block title %}Administravimo skydinė{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% set nr = 0 %}
+{% for user in info %}
+    {% if 'ROLE_SUPER_ADMIN' in user.roles == false %}
+        {% set nr = nr + 1 %}
+    {% endif %}
+{% endfor %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>{{ nr }}</h3>
+
+                    <p>
+                        Registruotų vartotojų<br/>
+                        Per Facebook
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <i class="small-box-footer">&nbsp;</i>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>Statistika</h3>
+
+                    <p>
+                        <a href="https://www.google.com/analytics/" target="_blank" style="color: #fff;">Google Analytics</a><br/>
+                        &nbsp;
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <i class="small-box-footer"><a href="https://www.google.com/analytics/" target="_blank" style="color: #fff;">Google Analytics <i class="fa fa-arrow-circle-right"></i></a></i>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">
+            Papildoma informacija<br/>
+            <small>* Rodomi tik administracijos vartotojai</small>
+        </h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">El-paštas</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Slapyvardis</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Paskutinis prisijungimas</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% set nr = 0 %}
+                        {% for user in info %}
+                            {% if 'ROLE_SUPER_ADMIN' in user.roles %}
+                                {% set nr = nr + 1 %}
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">{{ nr }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.last_login }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,8 @@
+Jūsų išvestas kalorijų skaičius: {{ result }}<br>
+
+{% for plan in plans %}
+{{ plan.caloriesNum }}
+{{ plan.goals }}
+{{ plan.foodDishId }}<br>
+{% endfor %}
+

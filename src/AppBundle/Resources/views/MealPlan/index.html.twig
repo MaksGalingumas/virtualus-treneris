@@ -1,0 +1,144 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Pagrindinis - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            overflow: hidden;
+            background-color: #2c3e50;
+        }
+        .content {
+            margin-top: 80px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-default" style="margin-bottom: 0px;">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('homepage') }}">VIRTUALUSTRENERIS</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('homepage') }}">Titulinis <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="{{ path('sport_plan_search') }}">Sporto programos <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profilis <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('profile_meal_plan') }}">Mano mitybos programa</a></li>
+                            <li><a href="{{ path('profile_sport_plan') }}">Mano sporto programa</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('profile_clear') }}">Pašalinti programas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+        <div class="content container" style="padding: 50px;">
+
+            <div class="top-text">
+                <p>Ieškokite sau pritaikytos mitybos programos</p>
+            </div>
+
+                <div class="form-group" style="max-width: 400px; margin: auto;">
+                    {{ form_start(form, {'action': path('meal_plan_result')}) }}
+                    <div class="form-group">
+                        {{ form_label(form.goals, 'Tikslas') }}
+                        {{ form_errors(form.goals) }}
+                        {% if goals is defined %}
+                            <p class="errorDI">{{ form_widget(form.goals) }}</p>
+                        {% else %}
+                            {{ form_widget(form.goals) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.height, 'Ūgis') }}
+                        {{ form_errors(form.height) }}
+                        {% if height is defined %}
+                            <p class="errorDI">{{ form_widget(form.height) }}</p>
+                        {% else %}
+                            {{ form_widget(form.height) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.weight, 'Svoris') }}
+                        {{ form_errors(form.weight) }}
+                        {% if weight is defined %}
+                            <p class="errorDI">{{ form_widget(form.weight) }}</p>
+                        {% else %}
+                            {{ form_widget(form.weight) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.age, 'Amžius') }}
+                        {{ form_errors(form.age) }}
+                        {% if age is defined %}
+                            <p class="errorDI">{{ form_widget(form.age) }}</p>
+                        {% else %}
+                            {{ form_widget(form.age) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.activity, 'Fizinis aktyvumas') }}
+                        {{ form_errors(form.activity) }}
+                        {% if activity is defined %}
+                            <p class="errorDI">{{ form_widget(form.activity) }}</p>
+                        {% else %}
+                            {{ form_widget(form.activity) }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group" role="group">
+                        {{ form_label(form.gender, 'Lytis') }}
+                        {{ form_errors(form.gender) }}
+                        {% if gender is defined %}
+                            <p class="errorDI">{{ form_widget(form.gender) }}</p>
+                        {% else %}
+                            {{ form_widget(form.gender) }}
+                        {% endif %}
+                    </div><br>
+                        {{ form_end(form) }}
+                </div>
+        </div>
+    </div>
+
+    <!--
+    SWITCH'as VYRAS|MOTERIS
+    <div class="col-xs-9">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+                <input type="radio" name="gender" value="male" data-fv-field="gender"> Male
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="gender" value="female" data-fv-field="gender"> Female
+            </label>
+        </div>
+        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="gender" data-fv-result="VALID" style="display: none;">Nepasirinkote Lyties!</small>
+        </div>
+    <br/>
+    -->
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    {{ parent() }}
+{% endblock %}

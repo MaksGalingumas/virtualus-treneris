@@ -1,0 +1,364 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ parent() }} - Pagrindinis{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/jquery.fullPage.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/fullPage.min.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div id="overflow" style="display: none">hidden</div>
+    <ul id="menu" class="display OpenSans-Regular">
+        <li data-menuanchor="page1" class="active"><a href="#page1" id="button1">Pagrindinis</a></li>
+        <li data-menuanchor="page2"><a href="#page2" id="button2">Motyvacija</a></li>
+        <li data-menuanchor="page3"><a href="#page3" id="button3">Programos</a></li>
+        <li data-menuanchor="page4"><a href="#page4" id="button4">Contributors</a></li>
+        <li style="background-color: transparent;"><div class="fb-share-button" data-href="http://virtualustreneris.projektai.nfqakademija.lt/#page1" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fvirtualustreneris.projektai.nfqakademija.lt%2F%23page1&amp;src=sdkpreparse">Bendrinti</a></div></li>
+    </ul>
+    <div id="fullpage">
+            <div class="section" id="section1" data-anchor="page1">
+                <!--
+                <div id="fb-login-button">
+                    <div class="fb-login-button" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+               </div>
+                -->
+            <div class="box1">
+                <table border="0" class="table1">
+                    <tr style="height: 5%;">
+                        <td></td>
+                    </tr>
+                    {% for flash_message in app.session.flashBag.get('sessionMessage') %}
+                        <tr style="height: 20%;">
+                            <td>
+                                <div class="OpenSans white" style="font-size: 17px;">
+                                    {{ flash_message }}<br/>
+                                    <br/>
+                                    <a href="{{ path('profile') }}" style="text-decoration: none;">
+                                        <button>PROFILIS</button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+
+                    <tr style="height: 55%;">
+                        <td>
+                            <div class="box2">
+                                <img src="images/logo.png" alt="" /><br/>
+                                <br/>
+                                <div class="OpenSans textBox white">
+                                    <div style="padding: 10px; padding-left: 20px; padding-right: 20px;">
+                                        JŪSŲ ASMENINIS PAGALBININKAS
+                                        KELYJE Į POKYČIUS
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 20%;">
+                        <td>
+                            <div class="OpenSans white" style="font-size: 17px;">
+                                Kaip virtualus treneris tau padės?<br/>
+                                Eik į apačią ir pamatyk
+                                <br/>
+                                <a href="#page2" style="text-decoration: none;">
+                                    <button>TĘSTI &#8595;</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section OpenSans" id="section2" data-anchor="page2">
+            {% if browserIsGood == true %}
+                <div class="slide">
+                    <div class="textBox1" style="font-size: 17px; color: #ac2925;">
+                        <b>* Užeikite ant nuotraukos, norėdami paskaityti šio žmogaus istoriją.</b>
+                    </div>
+                    <br/>
+                    <div id="f1_container">
+                        <div id="f1_card" class="shadow">
+                            <div class="front face">
+                                <img src="images/gallery/sm1.png" style="width: 100%; max-width:650px;"/>
+                            </div>
+                            <div class="back face center">
+                                <div class="textBox1SpcImage">
+                                    <p style="font-size: 2.16vh;">
+                                        Dalinuosi su Jumis savo nuotrauką, kurioje matyti mano pasiekti rezultatai prieš ir po. Svorio mažinimo programos pradžioje svėriau 107 kg (ūgis – 178 cm), po trijų mėnesių – 87 kg. Džiaugiuosi rezultatais. Toliau sportuoju ir dar gerinsiu raumenų masę pasirinkdamas kitas siulomas virtualaus trenerio sporto programas.
+                                        Virtualaus trenerio parengta asmeninė programa buvo išties veiksminga. Geras treniruočių bei maisto planas,ypatingai paruoštas pagal asmeninius poreikius. Treniruočių programoje pratimai parinkti taip, kad nekenktų mano stuburui, o kaip tik jį stiprinti.
+                                        Mitybos planas – veiksmingas. Gal ne kiekvienas galėtų valgyti įvairų, bet normuotą maistą. Tam reikia turėti stiprią valią. Skirti daug laiko, kai ko ir atsisakyti, daug ką paaukoti, kad „sudeginti” nereikalingus kilogramus :) Tačiau matant tokį gerą progresą, verta laikytis virtualaus trenerio nurodyto plano.
+                                        Virtualus treneris prieš parengiant treniruočių, mitybos planus, išsiaiškino man reikiamą kalorijų kiekį ir siekiamus tikslus. Nustatė reikiamą fizinį krūvį, išmokė taisyklingai sportuoti.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="OpenSans white" style="font-size: 17px;">
+                        <a href="#page3" style="text-decoration: none; ">
+                            <button style="background-color: #1ba6dd; max-width: 170px;">TĘSTI &#8595;</button>
+                        </a>
+                    </div>
+                    -->
+                </div>
+            {% else %}
+                <div class="slide">
+                    <div class="textBox1">
+                        <img src="images/gallery/sm1.png" style="width: 100%; max-width:650px;"/>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="slide">
+                <div class="textBox1">
+                    "Jūsų mintys yra galinga mašina. Kai pradėsite manyti, jog sugebėsite -
+                    <br/>
+                    <div style="font-size: 2.96vh; min-font-size: 48px; color: #1ba6dd;">
+                        <b>JŪSŲ GYVENIMAS IMS KEISTIS!</b>"
+                    </div>
+                    <div class="textBoxAuthor">
+                        - Neila Rey
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="textBox1">
+                    "Tas momentas, kai jaučiate jog pasiduosite, kai jaučiate, jog daryti ne verta - yra tai, kada vyksta pokyčiai.
+                    <br/>
+                    <div style="font-size: 2.96vh; min-font-size: 48px; color: #1ba6dd;">
+                        <b>JUDĖKITE PIRMYN!</b>"
+                    </div>
+                    <div class="textBoxAuthor">
+                        - Ronnie Coleman
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="textBox1">
+                    "Disciplina darys tai, ką ji turi daryti, net jeigu jūs to ir nenorite"
+                    <div class="textBoxAuthor">
+                        - Rooney Coleman
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="section3" data-anchor="page3">
+
+            <div style="margin: 0px auto; width: 600px; background-color: #6f7e91; border-radius: 10px; text-align: left;
+            margin-bottom: 30px;" class="computerScreen">
+                <p style="margin-left: 20px; font-size: 18pt; color: #2c3e50; font-weight: bold;">NUGAROS STIPRINIMAS</p>
+                <div style="background-color: #3d4e60; padding: 10px;">
+                    <div style="opacity: 0.6; float: left;"><img width="120" border="1" src="http://stylesatlife.com/wp-content/uploads/2015/09/Baba-Ramdev-Yoga-for-Back-Pain-3.png"></div>
+                    <div style="color: #7d8c9f; padding-left: 10px; text-align: center;">
+                        Išsirinkite nugaros stiprinimo programą,
+                        kuri sustiprins jūsų pagrindinius nugaros raumenis,
+                        taip pat žemutinius trapecijos raumenis (šie raumenys atitraukia pečius, neleidžia jiems sukristi).
+                        Programa padės ne tik jūsų nugarai, bet ir jūsų savijautai.
+                    </div>
+                </div>
+                <a href="{{ path('profile_back_plan') }}" style="text-decoration: none;">
+                    <div class="OpenSans-Bold searchButtonStyle">
+                        <div>RODYTI</div>
+                    </div>
+                </a>
+            </div>
+
+            <table border="0" style="width: 100%;" class="computerScreen">
+                <td style="width: 48%;">
+                    <div style="width: 100%; max-width: 280px; float: right;">
+                        <div class="tableBody">
+                            <table border="0" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <table border="0">
+                                            <tr class="OpenSans-Bold" style="font-size: 18pt;">
+                                                <td>&nbsp;TRENIRUOČIŲ</td>
+                                            </tr>
+                                            <tr class="OpenSans-Regular" style="font-size: 16pt;">
+                                                <td>PROGRAMOS</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <img src="images/sport.png" alt="" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="OpenSans-Regular" style="text-align: center; background-color: #3d4e60; color: #8694a7;">
+                            <div style="padding: 15px;">
+                                <img src="images/calendar.png" alt="" />
+                                <br/>
+                                Išsirinkite sau pritaikytą treniruočių
+                                programą pagal jūsų pažangumą bei
+                                norimus rezultatus
+                            </div>
+                        </div>
+                        <a href="{{ path('sport_plan_search') }}" style="text-decoration: none;">
+                            <div class="OpenSans-Bold searchButtonStyle">
+                                SUSIDARYK
+                            </div>
+                        </a>
+                    </div>
+                </td>
+                <td style="width: 4%;"></td>
+                <td style="width: 48%;">
+                    <div style="width: 100%; max-width: 280px; float: left;">
+                        <div class="tableBody">
+                            <table border="0" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <table border="0">
+                                            <tr class="OpenSans-Bold" style="font-size: 18pt;">
+                                                <td>MITYBOS</td>
+                                            </tr>
+                                            <tr class="OpenSans-Regular" style="font-size: 16pt;">
+                                                <td>&nbsp; PROGRAMOS</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <img src="images/food.png" alt="" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="OpenSans-Regular" style="text-align: center; background-color: #3d4e60; color: #8694a7;">
+                            <div style="padding: 15px;">
+                                <img src="images/book.png" alt="" />
+                                <br/>
+                                Išsirinkite sau pritaikytą mitybos
+                                programą pagal rekomenduojamą
+                                kalorijų kiekį ir norimus
+                                rezultatus
+                            </div>
+                        </div>
+                        <a href="{{ path('meal_plan_search') }}" style="text-decoration: none;">
+                            <div class="OpenSans-Bold searchButtonStyle">
+                                SUSIDARYK
+                            </div>
+                        </a>
+                    </div>
+                </td>
+            </table>
+            <div class="phoneScreen">
+                <div style="width: 100%; max-width: 280px; margin: auto;">
+                    <div class="tableBody">
+                        <table border="0" style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <table border="0">
+                                        <tr class="OpenSans-Bold" style="font-size: 18pt;">
+                                            <td>&nbsp;NUGAROS</td>
+                                        </tr>
+                                        <tr class="OpenSans-Regular" style="font-size: 16pt;">
+                                            <td>&nbsp; STIPRINIMAS</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="text-align: right;">
+                                    <img src="images/sport.png" alt="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a href="{{ path('profile_back_plan') }}" style="text-decoration: none;">
+                        <div class="OpenSans-Bold searchButtonStyle">
+                            IEŠKOTI
+                        </div>
+                    </a>
+                    <br/>
+                </div>
+
+                <div style="width: 100%; max-width: 280px; margin: auto;">
+                    <div class="tableBody">
+                        <table border="0" style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <table border="0">
+                                        <tr class="OpenSans-Bold" style="font-size: 18pt;">
+                                            <td>TRENIRUOČIŲ</td>
+                                        </tr>
+                                        <tr class="OpenSans-Regular" style="font-size: 16pt;">
+                                            <td>PROGRAMOS</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="text-align: right;">
+                                    <img src="images/sport.png" alt="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a href="{{ path('sport_plan_search') }}" style="text-decoration: none;">
+                        <div class="OpenSans-Bold searchButtonStyle">
+                            IEŠKOTI
+                        </div>
+                    </a>
+                </div>
+
+                <div style="padding-top: 20px; width: 100%; max-width: 280px; margin: auto;">
+                    <div class="tableBody">
+                        <table border="0" style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <table border="0">
+                                        <tr class="OpenSans-Bold" style="font-size: 18pt;">
+                                            <td>MITYBOS</td>
+                                        </tr>
+                                        <tr class="OpenSans-Regular" style="font-size: 16pt;">
+                                            <td>PROGRAMOS</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="text-align: right;">
+                                    <img src="images/food.png" alt="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a href="{{ path('meal_plan_search') }}" style="text-decoration: none;">
+                        <div class="OpenSans-Bold searchButtonStyle">
+                            IEŠKOTI
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section4" data-anchor="page4">
+            <div style="max-width: 650px; width: 100%; margin: auto;">
+                <div class="OpenSans-Regular" style="padding-bottom: 30px; text-align: center; color: #fff; padding-top: 25px; background-color: #6a887e; border-top-left-radius: 10px; border-top-right-radius: 10px; font-size: 18pt;">
+                    VA KOMANDA<br><img src="http://virtualustreneris.projektai.nfqakademija.lt/images/logo.png">
+                </div>
+
+                <div class="OpenSans-Regular" style="text-align: left; padding-bottom: 10px; padding-left: 10px; padding-top: 10px; background-color: #ebebeb;">
+                    <div style="color: #404040; font-size: 14px; text-align: center;text-decoration: none;">
+                        <a href="mailto: aidas.eglinskas@gmail.com" style="color: blue;">Aidas Eglinskas</a> | Vilius Norbutas | Armandas Dambrauskas | Andrius Buivydas
+                    </div>
+                </div>
+                <div class="OpenSans-Regular" style="padding-bottom: 35px; color: #fff; padding-top: 25px; background-color: #6a887e; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                </div>
+                <div class="computerScreen" style="padding-top: 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.fullPage.min.js') }}"></script>
+    <script src="{{ asset('js/fullPage.min.js') }}"></script>
+    {{ parent() }}
+{% endblock %}

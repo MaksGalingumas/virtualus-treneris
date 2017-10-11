@@ -1,0 +1,328 @@
+//bootstrap
+@import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+*{box-sizing: border-box;}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.preload {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.logo {
+    height: 50%;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 10%;
+    font-size: 50px;
+    text-shadow: -1px 2px 2px #000;
+    text-align: center;
+    color: azure;
+    
+}
+
+.loader-frame {
+    width: 3%;
+    height: 50%;
+    margin: auto;
+    position: relative;
+}
+
+.loader1, .loader2{
+    position: absolute;
+    border: 5px solid transparent;
+    border-radius: 50%;
+}
+
+.loader1 {
+    width: 70px;
+    height: 70px;
+    border-top: 5px solid azure;
+    border-bottom: 5px solid azure;
+    animation: clockwisespin 2s linear 3;
+}
+
+.loader2 {
+    width: 60px;
+    height: 60px;
+    border-top: 5px solid darkturquoise;
+    border-right: 5px solid darkturquoise;
+    top: 5px; left: 5px;
+    animation: anticlockwisespin 2s linear 3;
+}
+
+@keyframes clockwisespin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes anticlockwisespin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(-360deg);}
+}
+
+@keyframes fadeout {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@media screen and (min-width: 150px) and (max-width: 640px ) {
+	.loader-frame {
+ 		padding:  auto;
+		width: 11%;
+	}
+
+ 	.logo {
+		width: 100%;
+
+	}
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #333;
+    color: white;
+    
+}
+
+.modal-body {
+    padding: 2px 16px;
+    background-color: white;
+    color: black;
+}
+
+/* Meal-Page */
+
+
+.main {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(44, 62, 80);
+}
+
+.content {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.top-text {
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 10px;
+    color: #2c3e50;
+    border-radius: 8px;
+    background-color: #6f7e91;
+}
+
+
+.checkbox {
+    font-size: 14px;
+}
+
+.product-dislike {
+    text-align: center;
+    font-size: 18px;
+    color: black;
+}
+
+.margin-20 {
+    margin-top: 20px;
+}
+
+.lentele {
+    color: black;
+    background-color: #6f7e91;
+    border-radius: 8px;
+    padding-top: 5px;
+    margin-top: 30px;
+}
+
+
+.btn-special {
+    top: 4px;
+    right: 1px;
+    padding: 2px 7px;
+    background-color: #3e6bad;
+    border-radius:7px;
+    width: 100%;
+    height: 35px;
+}
+
+/*facebook buttons*/
+
+#fb-login-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 101;
+    padding: 2px 7px;
+    background-color: #3e6bad;
+    border-radius:7px;
+}
+
+.fb-share-button {
+    position: absolute;
+    top: 4px;
+    right: 1px;
+    z-index: 101;
+    padding: 2px 7px;
+    background-color: #3e6bad;
+    border-radius:7px;
+}
+
+.fb-share-button:hover {
+    background-color: #3B5998;
+}
+/* Picture flip*/
+
+#f1_container {
+    position: relative;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 650px;
+    height: 400px;
+    z-index: 1;
+}
+#f1_container {
+    perspective: 1000;
+}
+#f1_card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 1.0s linear;
+}
+#f1_container:hover #f1_card {
+    transform: rotateY(180deg);
+}
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.face.back {
+    display: block;
+    transform: rotateY(900deg);
+    box-sizing: border-box;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+}
+
+.tableBodyRadiusT {
+    color: #2c3e50;
+    background-color: #6f7e91;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.tableBodyRadiusB {
+    color: #2c3e50;
+    background-color: #6f7e91;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.searchButtonStyle {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24pt;
+    text-align: center;
+    color: #2c3e50;
+    background-color: #6f7e91;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.sizeMain1 {
+    float: right;
+}
+
+.sizeMain2 {
+
+}
+
+@media screen and (max-width: 940px) {
+    .sizeMain1 {
+        float: none;
+        margin: auto;
+    }
+
+    .sizeMain2 {
+        margin: auto;
+    }
+}
+
+.errorDI {
+    border: #ac2925 solid 2px;
+}

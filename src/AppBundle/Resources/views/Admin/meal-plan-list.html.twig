@@ -1,0 +1,84 @@
+{% extends "::admin-base.html.twig" %}
+
+{% block title %}Administravimo skydinė{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block contentHeaderTitle %}
+    Mitybos programų sąrašas
+    <small></small>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+
+                </div>
+                {% for mealPlan in mealPlans %}
+                <table class="table table-hover" style="color: black; background-color: white;">
+                    <thead>
+                    <tr>
+                        <th>Programos id</th>
+                        <th>Programos kalorijos</th>
+                        <th>Programos tikslas</th>
+                        <th>Valgių id</th>
+                        <th>Veiksmai</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <td>{{ mealPlan.id }}</td>
+                        <td>{{ mealPlan.caloriesNum }}</td>
+                        <td>{{ mealPlan.goals }}</td>
+                        <td>{{ mealPlan.foodDishId }}</td>
+                        <td>
+                            <a href="{{ path('meal_plan_edit', {'id': mealPlan.id|default('1')}) }}" class="btn btn-primary">Redaguoti</a>
+                            <a href="{{ path('meal_plan_delete', {'id': mealPlan.id|default('1')}) }}" class="btn btn-danger">Ištrinti</a>
+                        </td>
+                    </tbody>
+                </table>
+                    <br>
+                    Mitybos plano valgiai pagal jų id: <br>
+                    <table class="table table-hover" style="color: black; background-color: white;">
+                        <thead>
+                        <tr>
+                            <th>Valgymai</th>
+                            <th>Produktai</th>
+                            <th>Baltymai</th>
+                            <th>Angliavandeniai</th>
+                            <th>Riebalai</th>
+                            <th>Cukrus</th>
+                            <th>Kalorijos</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for foodDishId in mealPlan.foodDishId|json_decode() %}
+                            {% for dish in dishes %}
+                                {% if foodDishId == dish.id %}
+                                    <tr>
+                                        <td>Valgymas</td>
+                                        <td>{{ dish.description }}</td>
+                                        <td>{{ dish.proteinNum }}</td>
+                                        <td>{{ dish.carbohydrateNum }}</td>
+                                        <td>{{ dish.fatNum }}</td>
+                                        <td>{{ dish.sugarNum }}</td>
+                                        <td>{{ dish.kcalNum }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr/>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
